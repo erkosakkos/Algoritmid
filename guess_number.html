@@ -1,0 +1,74 @@
+<<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// Initial setup of variables.
+var lowerLimit = 1;
+var upperLimit = 25;
+var tries = 5;
+var answer = Math.floor(Math.random() * (upperLimit - lowerLimit + 1)) + lowerLimit;
+var guess = '';
+var message = 'Arva number, mis jääb ' + lowerLimit + ' ja ' + upperLimit + ' vahele:';
+
+// Keep prompting the user for a guess until the game ends.
+while (tries > 0) {
+// Prompt the user for a guess.
+guess = prompt(message, guess);
+
+// If the cancel button was pushed, let the user know the game is ending and
+// break out of the loop.
+if (guess == null) {
+alert('Lahkun mängust.');
+break;
+}
+// If the guess is a number...
+else if (isFinite(guess) && guess != '') {
+// Make sure the guess is converted into a number.
+guess = +guess;
+
+// If the guess is less than the range let the user know.
+if (guess < lowerLimit) {
+alert('Teie oletus ei tohiks olla väiksem kui ' + lowerLimit + '.');
+}
+// If the guess is greater than the range let the user know.
+else if (guess > upperLimit) {
+alert('Teie oletus ei tohiks olla suurem kui ' + upperLimit + '.');
+}
+// If the guess is too high let the user know.
+else if (guess > answer) {
+alert('Teie oletus on liiga suur.');
+}
+// If the guess is too low let the user know.
+else if (guess < answer) {
+alert('Teie oletus on liiga väike');
+}
+// If none of the other cases were true that means the answer must have
+// been guessed so let the user know and break out of the loop.
+else {
+alert('Suurepärane töö, leitsite õige numbri!');
+break;
+}
+}
+// If the guess is not a number, let the user know.
+else {
+alert('Peate arvamiseks sisestama numbri.');
+}
+
+tries = tries - 1;
+}
+
+if (tries == 0) {
+alert('Proovid said otsa. Number oli ' + answer + '.');
+}
+</script>
+</body>
+</html>
+
+<?php
